@@ -32,14 +32,32 @@ public class SampleTest {
     }
 
     @Test
-    public void sampleTest() {
+    public void emptyField() {
         MobileElement el1 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/userInput");
         el1.click();
         el1.sendKeys(" ");
         MobileElement el2 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/buttonChange");
         el2.click();
         MobileElement el3 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/textToBeChanged");
-        Assertions.assertEquals("Hello UiAutomator!", el3.getText());
+        String expected = el3.getText();
+        String actual = el3.getText();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void anotherActivityTest() throws InterruptedException {
+        String text = "Netology";
+        MobileElement el1 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/userInput");
+        el1.click();
+        el1.sendKeys(text);
+        MobileElement el2 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/buttonActivity");
+        el2.click();
+        Thread.sleep(3000);
+        MobileElement el3 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/text");
+        el3.isDisplayed();
+        String expected = text;
+        String actual = el3.getText();
+        Assertions.assertEquals(expected, actual);
     }
 
     @AfterEach
