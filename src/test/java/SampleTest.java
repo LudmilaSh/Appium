@@ -33,13 +33,14 @@ public class SampleTest {
 
     @Test
     public void emptyField() {
+        String text = "  ";
         MobileElement el1 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/userInput");
         el1.click();
-        el1.sendKeys(" ");
+        el1.sendKeys(text);
         MobileElement el2 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/buttonChange");
         el2.click();
         MobileElement el3 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/textToBeChanged");
-        String expected = el3.getText();
+        String expected = text;
         String actual = el3.getText();
         Assertions.assertEquals(expected, actual);
     }
